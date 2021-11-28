@@ -17,14 +17,15 @@ upArrow(yukarı), leftArrow(sola), upArrow(Aşağı), rightArrow(sağa), O(zıpl
 GameMarble iki kişilik offline bir oyundur. Oyunun amacı rakibinin can barını sıfırlayıp 3 tane olan canını da bitirmektir. Bunu yapabilmenin yolları ise rakibinizin arenadan çıkarılması/çıkması veya rabiniz ile olan çarpışma anında ondan daha yüksekte olarak onun can barını azaltmaktır. Ayrıca en önemlisi arenadan dışarı çıkıp geri giremezseniz oyunu kaybedersiniz. Oyundaki zıplama mekaniğini yalnızca düz alandayken ve yere temas ederken kullanabilirsiniz.
 
 
-## online bağlantıya giden link: ... (simmer.io veya itch.io)
+## GameMarble playable:   
+https://farukkayaduman.itch.io/gamemarble
  
 ##	Kullanılan Hazır Assetler:  
 https://pixabay.com/illustrations/space-science-fiction-cosmos-911785/  
 https://pixabay.com/photos/yellow-wall-concrete-design-gold-1845394/  
 https://www.flaticon.com/free-icon/pause_890781
 
-## Proje Sahipleri
+## Geliştiriciler
 Osman Tahir Kuzu  
 19360859030  
 Bursa Teknik Üniversitesi  
