@@ -12,10 +12,13 @@
 GameMarble iki kişilik offline bir oyundur. Oyunun amacı rakibinin can barını sıfırlayıp 3 tane olan canını da bitirmektir. Bunu yapabilmenin yolları ise rakibinizin arenadan çıkarılması/çıkması veya rakibiniz ile olan çarpışma anında onun y pozisyonundan daha yüksekte olarak ona hasar vermektir. Ayrıca en önemlisi arenadan dışarı çıkıp geri giremezseniz oyunu kaybedersiniz. Oyundaki zıplama mekaniğini yalnızca düz alandayken ve yere temas ederken kullanabilirsiniz.
 ### Hareket Tuşları
 **Player1(Yeşil):**   
-W(yukarı), A(sola), S(Aşağı), D(sağa), Space(zıplama)
+W(yukarı), A(sol), S(Aşağı), D(sağ), Space(zıplama)
  
 **Player2(Turuncu):**    
-upArrow(yukarı), leftArrow(sola), upArrow(Aşağı), rightArrow(sağa), O(zıplama)
+upArrow(yukarı), leftArrow(sol), upArrow(Aşağı), rightArrow(sağ), O(zıplama)  
+
+**Kamera Rotasyonu:**  
+N(tuşu) + Mouse(yatay eksende hareket)
 
 ## GameMarble Playable Link:   
 https://farukkayaduman.itch.io/gamemarble
