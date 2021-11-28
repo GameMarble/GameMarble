@@ -1,10 +1,10 @@
 # GameMarble
 ### Oyun Sahnesi  
-![image](https://user-images.githubusercontent.com/56130302/143783702-0e653573-b0a0-4776-b10c-e1ad28af6854.png)
+![image](https://user-images.githubusercontent.com/56130302/143788175-ac7033ac-216d-4a96-9426-2460bc47a9c9.png)
 ### Ana Menü
-![image](https://user-images.githubusercontent.com/56130302/143783744-2f6d12e7-88c4-4bd1-8114-38c6bb33bad5.png)
+![image](https://user-images.githubusercontent.com/56130302/143788242-1f3a9bf9-2958-488d-9fc1-58689470c473.png)
 ### Pause Ekranı
-![image](https://user-images.githubusercontent.com/56130302/143783766-4294fdde-8f4e-48d0-b240-e54167785390.png)
+![image](https://user-images.githubusercontent.com/56130302/143788223-3cc46ae9-734e-4386-bc91-2dc6c0e1fa1f.png)
 
 ## Hareket Tuşları
 **Player1(Yeşil):**   
@@ -14,7 +14,7 @@ W(yukarı), A(sola), S(Aşağı), D(sağa), Space(zıplama)
 upArrow(yukarı), leftArrow(sola), upArrow(Aşağı), rightArrow(sağa), O(zıplama)
 
 ## GameMarble Nedir ve Nasıl Oynanır?
-GameMarble iki kişilik offline bir oyundur. Oyunun amacı rakibinin can barını sıfırlayıp 3 tane olan canını da bitirmektir. Bunu yapabilmenin yolları ise rakibinizin arenadan çıkarılması/çıkması veya rabiniz ile olan çarpışma anında ondan daha yüksekte olarak onun can barını azaltmaktır. Ayrıca en önemlisi arenadan dışarı çıkıp geri giremezseniz oyunu kaybedersiniz. Oyundaki zıplama mekaniğini yalnızca düz alandayken ve yere temas ederken kullanabilirsiniz.
+GameMarble iki kişilik offline bir oyundur. Oyunun amacı rakibinin can barını sıfırlayıp 3 tane olan canını da bitirmektir. Bunu yapabilmenin yolları ise rakibinizin arenadan çıkarılması/çıkması veya rakibiniz ile olan çarpışma anında onun y pozisyonundan daha yüksekte olarak ona hasar vermektir. Ayrıca en önemlisi arenadan dışarı çıkıp geri giremezseniz oyunu kaybedersiniz. Oyundaki zıplama mekaniğini yalnızca düz alandayken ve yere temas ederken kullanabilirsiniz.
 
 
 ## GameMarble playable:   
