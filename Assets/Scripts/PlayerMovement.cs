@@ -6,12 +6,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    
     public float speed = 5000.0f;
     private bool isGrounded = true;
     private Rigidbody rb;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Physics.gravity = new Vector3(0, -20.8F, 0);
     }
 
     void Update()
@@ -19,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    
     void FixedUpdate()
     {
         if(gameObject.name == GameObject.Find("Player1").name)

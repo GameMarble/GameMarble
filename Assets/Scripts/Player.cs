@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     public int can = 3;
     public int damage = 20;
     public int maxHealth = 100;
-    public int currentHealth = 100;
+    public int currentHealth;
 
     public static bool GameHasEnded = false;
 
@@ -27,13 +27,33 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        
         currentHealth = maxHealth;
         healthBar.SetMaxHeaalth(maxHealth);
     }
 
     void Update()
     {
+        Player p1 = player1.GetComponent<Player>();
+        Player p2 = player2.GetComponent<Player>();
+
+        p1.y_position = p1.transform.position.y;
+        p2.y_position = p2.transform.position.y;
         
+        if(p1.y_position < -9.0f)
+        {
+            Destroy(p1.gameObject);
+            gameManager.GameEnded();
+            winnerText.text = player2.name + " Won the Game!";
+            GameHasEnded = true;
+        }
+        if(p2.y_position < -9.0f)
+        {
+            Destroy(p2.gameObject);
+            gameManager.GameEnded();
+            winnerText.text = player1.name + " Won the Game!";
+            GameHasEnded = true;
+        }
     }
     
     void OnCollisionEnter(Collision collision)
@@ -43,6 +63,7 @@ public class Player : MonoBehaviour
 
         p1.y_position = p1.transform.position.y;
         p2.y_position = p2.transform.position.y;
+        
 
         if (collision.gameObject.tag == "Player2")
         {   /* player1 aşağıdan çarptı*/
@@ -55,7 +76,7 @@ public class Player : MonoBehaviour
 
                 if(p1.currentHealth == 0)
                 {
-                    Debug.Log("player1 can gitti");
+                    //Debug.Log("player1 can gitti");
                     p1.can--;
                     p1HealthNumber.text = "Health: " + p1.can;
                     p1.currentHealth = p1.maxHealth;
@@ -65,7 +86,7 @@ public class Player : MonoBehaviour
                 if(p1.can == 0)
                 {
                     Destroy(p1.gameObject);
-                    Debug.Log("player2 kazandı");
+                    //Debug.Log("player2 kazandı");
 
                     gameManager.GameEnded();
                     winnerText.text = player2.name + " Won the Game!";
@@ -82,7 +103,7 @@ public class Player : MonoBehaviour
                 p2.healthBar.SetHealth(p2.currentHealth);
                 if(p2.currentHealth == 0 )
                 {
-                    Debug.Log("player2 can gitti");
+                    //Debug.Log("player2 can gitti");
                     p2.can--;
                     p2HealthNumber.text = "Health: " + p2.can;
                     p2.currentHealth = p2.maxHealth;
@@ -91,18 +112,14 @@ public class Player : MonoBehaviour
                 if(p2.can == 0)
                 {
                     Destroy(p2.gameObject);
-                    Debug.Log("player1 kazandı");
+                    //Debug.Log("player1 kazandı");
 
                     gameManager.GameEnded();
                     winnerText.text = player1.name + " Won the Game!";
                     GameHasEnded = true;
                 }
             }
-            else if(p1.y_position == p2.y_position)
-            {
-                Debug.Log("hiç bir şey olmadı");
-                //player1 ile player2'nin y değerleri aynı ise hiçbir şey olmaz
-            }
+            
             
         }
     }
