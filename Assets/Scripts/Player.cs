@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
 
     public Text winnerText;
+    public Text p1HealthNumber;
+    public Text p2HealthNumber;
 
     public float y_position;
     public int can = 3;
@@ -20,8 +22,6 @@ public class Player : MonoBehaviour
     public int currentHealth = 100;
 
     public static bool GameHasEnded = false;
-
-    private string winner;
 
     public HealthBar healthBar;
 
@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("player1 can gitti");
                     p1.can--;
+                    p1HealthNumber.text = "Health: " + p1.can;
                     p1.currentHealth = p1.maxHealth;
                     p1.healthBar.SetHealth(p1.maxHealth);
                     
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("player2 can gitti");
                     p2.can--;
+                    p2HealthNumber.text = "Health: " + p2.can;
                     p2.currentHealth = p2.maxHealth;
                     p2.healthBar.SetHealth(p2.maxHealth);
                 }
