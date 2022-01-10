@@ -27,9 +27,24 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
-        currentHealth = maxHealth;
-        healthBar.SetMaxHeaalth(maxHealth);
+        Player p1 = player1.GetComponent<Player>();
+        Player p2 = player2.GetComponent<Player>();
+
+        if (PlayerPrefs.GetInt("isContinued") != 1)
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+        else
+        {
+            p1.currentHealth = PlayerPrefs.GetInt("healthP1");
+            p1.healthBar.SetHealth(PlayerPrefs.GetInt("healthP1"));
+            p1HealthNumber.text = "Health: " + PlayerPrefs.GetInt("canP1").ToString();
+
+            p2.currentHealth = PlayerPrefs.GetInt("healthP2");
+            p2.healthBar.SetHealth(PlayerPrefs.GetInt("healthP2"));
+            p2HealthNumber.text = "Health: " + PlayerPrefs.GetInt("canP2").ToString();
+        }
     }
 
     void Update()
@@ -63,7 +78,6 @@ public class Player : MonoBehaviour
 
         p1.y_position = p1.transform.position.y;
         p2.y_position = p2.transform.position.y;
-        
 
         if (collision.gameObject.tag == "Player2")
         {   /* player1 aşağıdan çarptı*/
@@ -73,15 +87,18 @@ public class Player : MonoBehaviour
                 p1.currentHealth -= damage;
 
                 p1.healthBar.SetHealth(p1.currentHealth);
+                PlayerPrefs.SetInt("healthP1", p1.currentHealth);
 
-                if(p1.currentHealth == 0)
+                if (p1.currentHealth == 0)
                 {
                     //Debug.Log("player1 can gitti");
                     p1.can--;
                     p1HealthNumber.text = "Health: " + p1.can;
                     p1.currentHealth = p1.maxHealth;
                     p1.healthBar.SetHealth(p1.maxHealth);
-                    
+
+                    PlayerPrefs.SetInt("healthP1", p1.currentHealth);
+                    PlayerPrefs.SetInt("canP1", p1.can);
                 }
                 if(p1.can == 0)
                 {
@@ -101,13 +118,18 @@ public class Player : MonoBehaviour
                 p2.currentHealth -= damage;
 
                 p2.healthBar.SetHealth(p2.currentHealth);
-                if(p2.currentHealth == 0 )
+                PlayerPrefs.SetInt("healthP2", p2.currentHealth);
+
+                if (p2.currentHealth == 0 )
                 {
                     //Debug.Log("player2 can gitti");
                     p2.can--;
                     p2HealthNumber.text = "Health: " + p2.can;
                     p2.currentHealth = p2.maxHealth;
                     p2.healthBar.SetHealth(p2.maxHealth);
+
+                    PlayerPrefs.SetInt("canP2", p2.can);
+                    PlayerPrefs.SetInt("healthP2", p2.currentHealth);
                 }
                 if(p2.can == 0)
                 {
@@ -119,8 +141,6 @@ public class Player : MonoBehaviour
                     GameHasEnded = true;
                 }
             }
-            
-            
         }
     }
 }

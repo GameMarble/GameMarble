@@ -3,8 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public void StartGame()
+    public GameData gameData;
+
+    public void ContinueGame()
     {
+        if (PlayerPrefs.GetInt("isDataSaved") == 1)
+        {
+            PlayerPrefs.SetInt("isContinued", 1);
+            SceneManager.LoadScene(1);
+        }
+        else
+            SceneManager.LoadScene("MainScene");
+    }
+
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("MainScene");
     }
 
