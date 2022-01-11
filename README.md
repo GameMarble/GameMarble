@@ -24,9 +24,10 @@ N(tuşu) + Mouse(yatay eksende hareket)
 https://farukkayaduman.itch.io/gamemarble
  
 ##	Kullanılan Hazır Assetler:  
-https://pixabay.com/illustrations/space-science-fiction-cosmos-911785/  
-https://pixabay.com/photos/yellow-wall-concrete-design-gold-1845394/  
-https://www.flaticon.com/free-icon/pause_890781
+Health Bar: https://github.com/Brackeys/Health-Bar
+Main Menu Background: https://pixabay.com/illustrations/space-science-fiction-cosmos-911785/
+Main Menu Background 2: https://pixabay.com/photos/yellow-wall-concrete-design-gold-1845394/  
+Pause Button: https://www.flaticon.com/free-icon/pause_890781
 
 ## Geliştiriciler
 Osman Tahir Kuzu  
