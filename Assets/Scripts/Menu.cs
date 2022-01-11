@@ -10,16 +10,19 @@ public class Menu : MonoBehaviour
         if (PlayerPrefs.GetInt("isDataSaved") == 1)
         {
             PlayerPrefs.SetInt("isContinued", 1);
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(PlayerPrefs.GetInt("lastSceneIndex"));
         }
         else
-            SceneManager.LoadScene("MainScene");
+            LoadRandomArena();
     }
 
-    public void NewGame()
+    public void LoadRandomArena()
     {
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("MainScene");
+        
+        int sceneIndex = Random.Range(1, 3);
+        
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void QuitGame()

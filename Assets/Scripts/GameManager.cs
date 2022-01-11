@@ -9,10 +9,13 @@ public class GameManager : MonoBehaviour
     public GameObject pauseButton;
     public GameObject GameEndingUI;
 
+    public AudioSource audioSource;
+
     public void Pause()
     {
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
+        audioSource.Pause();
         pauseButton.SetActive(false);
     }
 
@@ -20,12 +23,14 @@ public class GameManager : MonoBehaviour
     {
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
+        audioSource.Play();
         pauseButton.SetActive(true);
     }
 
-    public void LoadMainScene()
+    public void Restart()
     {
-        SceneManager.LoadScene("MainScene");
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMainMenu()
@@ -40,7 +45,17 @@ public class GameManager : MonoBehaviour
 
     public void GameEnded()
     {
+        PlayerPrefs.DeleteAll();
+        audioSource.Pause();
         GameEndingUI.SetActive(true);
     }
 
+    public void LoadRandomArena()
+    {
+        PlayerPrefs.DeleteAll();
+
+        int sceneIndex = Random.Range(1,2);
+
+        SceneManager.LoadScene(sceneIndex);
+    }
 }

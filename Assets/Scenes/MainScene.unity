@@ -478,7 +478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.8, y: -61.22}
+  m_AnchoredPosition: {x: 79, y: -61.22}
   m_SizeDelta: {x: 150, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &373835894
@@ -1786,6 +1786,7 @@ MonoBehaviour:
   pauseUI: {fileID: 1966139874}
   pauseButton: {fileID: 2070811353}
   GameEndingUI: {fileID: 2039304368}
+  audioSource: {fileID: 1681397635}
 --- !u!4 &1509812528
 Transform:
   m_ObjectHideFlags: 0
@@ -1979,7 +1980,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1509812527}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadMainScene
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2923,7 +2924,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16683bef5e51ede498b9bb4b7949b502, type: 2}
+  - {fileID: 2100000, guid: ea1979fe34d1f9a4c831df2d5d941fed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

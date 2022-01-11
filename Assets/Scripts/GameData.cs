@@ -8,8 +8,6 @@ public class GameData : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
-    public int lastSceneIndex;
-
     void Start()
     {
         Time.timeScale = 1f;
@@ -22,9 +20,6 @@ public class GameData : MonoBehaviour
 
     public void SaveData()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
-            lastSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
         PlayerPrefs.SetFloat("xPositionPlayer1", player1.transform.position.x);
         PlayerPrefs.SetFloat("yPositionPlayer1", player1.transform.position.y);
         PlayerPrefs.SetFloat("zPositionPlayer1", player1.transform.position.z);
@@ -38,6 +33,8 @@ public class GameData : MonoBehaviour
 
         PlayerPrefs.SetInt("canP1", player1.GetComponent<Player>().can);
         PlayerPrefs.SetInt("canP2", player2.GetComponent<Player>().can);
+
+        PlayerPrefs.SetInt("lastSceneIndex", SceneManager.GetActiveScene().buildIndex);
 
         PlayerPrefs.SetInt("isDataSaved", 1);
     }
