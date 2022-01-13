@@ -1160,7 +1160,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1618912114}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: LoadRandomArena
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1441,7 +1441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 7041828096253533134, guid: 5a1d74bf69f027a4e987a10299e50b2b, type: 3}
   player2: {fileID: 8261228077192253240, guid: fd7c52913d950ab45a89964c9267df50, type: 3}
-  lastSceneIndex: 0
 --- !u!4 &1663189010
 Transform:
   m_ObjectHideFlags: 0

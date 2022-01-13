@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    private int scoreP1 = 0;
+    private int scoreP2 = 0;
+
     public static bool GameHasEnded = false;
 
     public HealthBar healthBar;
@@ -57,14 +60,14 @@ public class Player : MonoBehaviour
         
         if(p1.y_position < -9.0f)
         {
-            Destroy(p1.gameObject);
+            
             gameManager.GameEnded();
             winnerText.text = player2.name + " Won the Game!";
             GameHasEnded = true;
         }
         if(p2.y_position < -9.0f)
         {
-            Destroy(p2.gameObject);
+            
             gameManager.GameEnded();
             winnerText.text = player1.name + " Won the Game!";
             GameHasEnded = true;
@@ -97,8 +100,11 @@ public class Player : MonoBehaviour
                     p1.currentHealth = p1.maxHealth;
                     p1.healthBar.SetHealth(p1.maxHealth);
 
-                    PlayerPrefs.SetInt("healthP1", p1.currentHealth);
                     PlayerPrefs.SetInt("canP1", p1.can);
+                    PlayerPrefs.SetInt("healthP1", p1.currentHealth);
+
+                    PlayerPrefs.SetInt("canP2", p2.can);
+                    PlayerPrefs.SetInt("healthP2", p2.currentHealth);
                 }
                 if(p1.can == 0)
                 {
@@ -127,6 +133,9 @@ public class Player : MonoBehaviour
                     p2HealthNumber.text = "Health: " + p2.can;
                     p2.currentHealth = p2.maxHealth;
                     p2.healthBar.SetHealth(p2.maxHealth);
+
+                    PlayerPrefs.SetInt("canP1", p1.can);
+                    PlayerPrefs.SetInt("healthP1", p1.currentHealth);
 
                     PlayerPrefs.SetInt("canP2", p2.can);
                     PlayerPrefs.SetInt("healthP2", p2.currentHealth);

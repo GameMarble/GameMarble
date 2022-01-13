@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
 
     public AudioSource audioSource;
 
+    private void Awake()
+    {
+        audioSource = FindObjectOfType<AudioSource>();
+    }
+
     public void Pause()
     {
         pauseUI.SetActive(true);
@@ -30,7 +35,15 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         PlayerPrefs.DeleteAll();
+        audioSource.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadNextScene()
+    {
+        PlayerPrefs.DeleteAll();
+        audioSource.Play();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadMainMenu()
@@ -48,6 +61,11 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
         audioSource.Pause();
         GameEndingUI.SetActive(true);
+    }
+
+    public void NewGame()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     public void LoadRandomArena()

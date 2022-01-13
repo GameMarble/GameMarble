@@ -46,5 +46,9 @@ public class GameData : MonoBehaviour
 
         player1.GetComponent<Player>().currentHealth = PlayerPrefs.GetInt("healthP1");
         player2.GetComponent<Player>().currentHealth = PlayerPrefs.GetInt("healthP2");
+
+        player1.GetComponent<Player>().can = PlayerPrefs.GetInt("canP1");
+        player2.GetComponent<Player>().can = PlayerPrefs.GetInt("canP2");
+
     }
 }

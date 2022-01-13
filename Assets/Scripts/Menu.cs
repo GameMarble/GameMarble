@@ -13,10 +13,17 @@ public class Menu : MonoBehaviour
             SceneManager.LoadScene(PlayerPrefs.GetInt("lastSceneIndex"));
         }
         else
-            LoadRandomArena();
+            NewGame();
     }
 
-    public void LoadRandomArena()
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void LoadRandomArena() // Kullanýlmýyor
     {
         PlayerPrefs.DeleteAll();
         
