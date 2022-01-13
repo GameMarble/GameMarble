@@ -60,14 +60,12 @@ public class Player : MonoBehaviour
         
         if(p1.y_position < -9.0f)
         {
-            
             gameManager.GameEnded();
             winnerText.text = player2.name + " Won the Game!";
             GameHasEnded = true;
         }
         if(p2.y_position < -9.0f)
         {
-            
             gameManager.GameEnded();
             winnerText.text = player1.name + " Won the Game!";
             GameHasEnded = true;
@@ -108,7 +106,6 @@ public class Player : MonoBehaviour
                 }
                 if(p1.can == 0)
                 {
-                    Destroy(p1.gameObject);
                     //Debug.Log("player2 kazandı");
 
                     gameManager.GameEnded();
