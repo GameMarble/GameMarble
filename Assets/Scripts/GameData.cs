@@ -50,5 +50,8 @@ public class GameData : MonoBehaviour
         player1.GetComponent<Player>().can = PlayerPrefs.GetInt("canP1");
         player2.GetComponent<Player>().can = PlayerPrefs.GetInt("canP2");
 
+        player1.GetComponent<Player>().scoreP1 = PlayerPrefs.GetInt("scoreP1");
+        player2.GetComponent<Player>().scoreP2 = PlayerPrefs.GetInt("scoreP2");
+
     }
 }

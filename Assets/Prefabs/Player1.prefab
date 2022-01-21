@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7041828096253533134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4586697, y: 0.65000004, z: 8.09431}
+  m_LocalPosition: {x: -2.5385714, y: 0.65, z: -2.6581998}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -140,14 +140,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 7041828096253533134}
-  player2: {fileID: 0}
+  player2: {fileID: 8261228077192253240, guid: fd7c52913d950ab45a89964c9267df50, type: 3}
   gameManager: {fileID: 0}
   winnerText: {fileID: 0}
   p1HealthNumber: {fileID: 0}
   p2HealthNumber: {fileID: 0}
+  resultText: {fileID: 0}
+  resultScore: {fileID: 0}
   y_position: 0
-  can: 3
+  can: 1
   damage: 20
   maxHealth: 100
   currentHealth: 80
+  scoreP1: 0
+  scoreP2: 0
   healthBar: {fileID: 0}

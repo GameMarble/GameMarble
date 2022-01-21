@@ -3,8 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public GameData gameData;
-
     public void ContinueGame()
     {
         if (PlayerPrefs.GetInt("isDataSaved") == 1)
@@ -21,15 +19,6 @@ public class Menu : MonoBehaviour
         PlayerPrefs.DeleteAll();
 
         SceneManager.LoadScene("MainScene");
-    }
-
-    public void LoadRandomArena() // Kullanýlmýyor
-    {
-        PlayerPrefs.DeleteAll();
-        
-        int sceneIndex = Random.Range(1, 3);
-        
-        SceneManager.LoadScene(sceneIndex);
     }
 
     public void QuitGame()

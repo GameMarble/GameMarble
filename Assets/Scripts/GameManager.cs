@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
-        audioSource.Pause();
+        // audioSource.Pause();
         pauseButton.SetActive(false);
     }
 
@@ -28,21 +28,18 @@ public class GameManager : MonoBehaviour
     {
         pauseUI.SetActive(false);
         Time.timeScale = 1f;
-        audioSource.Play();
+        // audioSource.Play();
         pauseButton.SetActive(true);
     }
 
     public void Restart()
     {
         PlayerPrefs.DeleteAll();
-        audioSource.Play();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
     }
 
     public void LoadNextScene()
     {
-        PlayerPrefs.DeleteAll();
-        audioSource.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -58,22 +55,11 @@ public class GameManager : MonoBehaviour
 
     public void GameEnded()
     {
-        PlayerPrefs.DeleteAll();
-        audioSource.Pause();
         GameEndingUI.SetActive(true);
     }
 
     public void NewGame()
     {
         SceneManager.LoadScene("MainScene");
-    }
-
-    public void LoadRandomArena()
-    {
-        PlayerPrefs.DeleteAll();
-
-        int sceneIndex = Random.Range(1,2);
-
-        SceneManager.LoadScene(sceneIndex);
     }
 }

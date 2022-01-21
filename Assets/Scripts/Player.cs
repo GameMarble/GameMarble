@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Player : MonoBehaviour
     public Text winnerText;
     public Text p1HealthNumber;
     public Text p2HealthNumber;
+    public Text resultText;
+    public Text resultScore;
+
+    public CubeTrigger cubeTrigger;
 
     public float y_position;
     public int can = 3;
@@ -21,22 +26,35 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    private int scoreP1 = 0;
-    private int scoreP2 = 0;
+    public int scoreP1;
+    public int scoreP2;
 
     public static bool GameHasEnded = false;
 
+    Player p1;
+    Player p2;
+
     public HealthBar healthBar;
+
+    private void Awake()
+    {
+        scoreP1 = PlayerPrefs.GetInt("scoreP1");
+        scoreP2 = PlayerPrefs.GetInt("scoreP2");
+    }
 
     void Start()
     {
-        Player p1 = player1.GetComponent<Player>();
-        Player p2 = player2.GetComponent<Player>();
+        p1 = player1.GetComponent<Player>();
+        p2 = player2.GetComponent<Player>();
 
         if (PlayerPrefs.GetInt("isContinued") != 1)
         {
+            PlayerPrefs.DeleteAll();
+
             currentHealth = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
+            p1.can = 3;
+            p2.can = 3;
         }
         else
         {
@@ -50,28 +68,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        Player p1 = player1.GetComponent<Player>();
-        Player p2 = player2.GetComponent<Player>();
+        if(cubeTrigger.triggeredPlayer == "Player1")
+        {
+            scoreP2++;
+            gameManager.GameEnded();
+            winnerText.text = player2.name + " Won This Round!";
+            PlayerPrefs.SetInt("scoreP2", scoreP2);
+            Debug.Log(scoreP1 + " " + scoreP2);
+            GameHasEnded = true;
+        }
+        else if(cubeTrigger.triggeredPlayer == "Player2")
+        {
+            scoreP1++;
+            gameManager.GameEnded();
+            winnerText.text = player1.name + " Won This Round!";
+            PlayerPrefs.SetInt("scoreP1", scoreP1);
+            Debug.Log(scoreP1 + " " + scoreP2);
+            GameHasEnded = true;
+        }
 
-        p1.y_position = p1.transform.position.y;
-        p2.y_position = p2.transform.position.y;
-        
-        if(p1.y_position < -9.0f)
-        {
-            gameManager.GameEnded();
-            winnerText.text = player2.name + " Won the Game!";
-            GameHasEnded = true;
-        }
-        if(p2.y_position < -9.0f)
-        {
-            gameManager.GameEnded();
-            winnerText.text = player1.name + " Won the Game!";
-            GameHasEnded = true;
-        }
+        if (GameHasEnded)
+            FinalResult();
     }
-    
+
     void OnCollisionEnter(Collision collision)
     {
         Player p1 = player1.GetComponent<Player>();
@@ -104,13 +125,19 @@ public class Player : MonoBehaviour
                     PlayerPrefs.SetInt("canP2", p2.can);
                     PlayerPrefs.SetInt("healthP2", p2.currentHealth);
                 }
-                if(p1.can == 0)
+                if(p1.can == 0 && p1.currentHealth == 100)
                 {
                     //Debug.Log("player2 kazandı");
-
+                    
+                    scoreP2++;
+                    PlayerPrefs.SetInt("scoreP2", scoreP2);
+                    Debug.Log(scoreP1 + " " + scoreP2);
                     gameManager.GameEnded();
-                    winnerText.text = player2.name + " Won the Game!";
+                    winnerText.text = player2.name + " Won This Round!";
                     GameHasEnded = true;
+                    
+                    if (SceneManager.GetActiveScene().buildIndex == 2)
+                        FinalResult();
                 }
             }
 
@@ -137,16 +164,46 @@ public class Player : MonoBehaviour
                     PlayerPrefs.SetInt("canP2", p2.can);
                     PlayerPrefs.SetInt("healthP2", p2.currentHealth);
                 }
-                if(p2.can == 0)
+                if(p2.can == 0 && p2.currentHealth == 100)
                 {
-                    Destroy(p2.gameObject);
                     //Debug.Log("player1 kazandı");
-
+                    
+                    scoreP1++;
+                    PlayerPrefs.SetInt("scoreP1", scoreP1);
+                    Debug.Log(scoreP1 + " " + scoreP2);
                     gameManager.GameEnded();
-                    winnerText.text = player1.name + " Won the Game!";
+                    winnerText.text = player1.name + " Won This Round!";
                     GameHasEnded = true;
+
+                    if (SceneManager.GetActiveScene().buildIndex == 2)
+                        FinalResult();
                 }
             }
+        }
+    }
+
+    public void FinalResult()
+    {
+        if (scoreP1 == 2 && scoreP2 == 0) // Player 1 kazanır
+        {
+            resultText.text = p1.name + " Won The Game!";
+            resultScore.text = "P1: 2                      P2: 0";
+        }
+
+        else if (scoreP1 == 0 && scoreP2 == 2) // Player 2 kazanır
+        {
+            resultText.text = p2.name + " Won The Game!";
+            resultScore.text = "P1: 0                      P2: 2";
+        }
+        else if (scoreP1 == 1 && scoreP2 == 1) // Berabere
+        {
+            resultText.text = "Draw!";
+            resultScore.text = "P1: 1                      P2: 1";
+        }
+        else
+        {
+            resultText.text = "Hatalı sonuç";
+            resultScore.text = "";
         }
     }
 }
