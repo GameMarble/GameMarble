@@ -34,6 +34,9 @@ public class GameData : MonoBehaviour
         PlayerPrefs.SetInt("canP1", player1.GetComponent<Player>().can);
         PlayerPrefs.SetInt("canP2", player2.GetComponent<Player>().can);
 
+        PlayerPrefs.SetInt("scoreP1", player1.GetComponent<Player>().scoreP1);
+        PlayerPrefs.SetInt("scoreP2", player2.GetComponent<Player>().scoreP2);
+
         PlayerPrefs.SetInt("lastSceneIndex", SceneManager.GetActiveScene().buildIndex);
 
         PlayerPrefs.SetInt("isDataSaved", 1);
