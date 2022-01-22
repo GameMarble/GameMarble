@@ -153,6 +153,7 @@ MonoBehaviour:
   damage: 20
   maxHealth: 100
   currentHealth: 100
+  flag: 0
   scoreP1: 0
   scoreP2: 0
   healthBar: {fileID: 0}

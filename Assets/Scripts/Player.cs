@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public int damage = 20;
     public int maxHealth = 100;
     public int currentHealth;
-
+    
     public int scoreP1;
     public int scoreP2;
 
@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
             healthBar.SetMaxHealth(maxHealth);
             p1.can = 3;
             p2.can = 3;
+            
         }
         else
         {
@@ -70,34 +71,42 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(cubeTrigger.triggeredPlayer == "Player1")
-        {
-            scoreP2++;
-            gameManager.GameEnded();
-            winnerText.text = player2.name + " Won This Round!";
-            PlayerPrefs.SetInt("scoreP2", scoreP2);
-            Debug.Log(scoreP1 + " " + scoreP2);
-            GameHasEnded = true;
-        }
-        else if(cubeTrigger.triggeredPlayer == "Player2")
-        {
-            scoreP1++;
-            gameManager.GameEnded();
-            winnerText.text = player1.name + " Won This Round!";
-            PlayerPrefs.SetInt("scoreP1", scoreP1);
-            Debug.Log(scoreP1 + " " + scoreP2);
-            GameHasEnded = true;
-        }
+        
+            if(cubeTrigger.triggeredPlayer == "Player1" && player1.transform.position.y < player2.transform.position.y )
+            {
+                
+                scoreP2++;
+                PlayerPrefs.SetInt("scoreP2", scoreP2);
+                winnerText.text = player2.name + " Won This Round!";
+                
+                
+                //Debug.Log(scoreP1 + " " + scoreP2);
+                //Debug.Log("player2 kazandı");
 
-        if (GameHasEnded)
-            FinalResult();
+                gameManager.GameEnded();
+                GameHasEnded = true;
+            }
+            else if(cubeTrigger.triggeredPlayer == "Player2" && player1.transform.position.y > player2.transform.position.y )
+            {
+                
+                scoreP1++;
+                PlayerPrefs.SetInt("scoreP1", scoreP1);
+                // gameManager.GameEnded();
+                winnerText.text = player1.name + " Won This Round!";
+                
+                //Debug.Log(scoreP1 + " " + scoreP2);
+                // Debug.Log("player1 kazandı");
+
+                gameManager.GameEnded();
+                GameHasEnded = true;
+            }
+            if(GameHasEnded)
+                FinalResult();
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Player p1 = player1.GetComponent<Player>();
-        Player p2 = player2.GetComponent<Player>();
-
+        
         p1.y_position = p1.transform.position.y;
         p2.y_position = p2.transform.position.y;
 
@@ -131,9 +140,11 @@ public class Player : MonoBehaviour
                     
                     scoreP2++;
                     PlayerPrefs.SetInt("scoreP2", scoreP2);
-                    Debug.Log(scoreP1 + " " + scoreP2);
-                    gameManager.GameEnded();
+                    //Debug.Log(scoreP1 + " " + scoreP2);
+                    
                     winnerText.text = player2.name + " Won This Round!";
+
+                    gameManager.GameEnded();
                     GameHasEnded = true;
                     
                     if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -170,9 +181,11 @@ public class Player : MonoBehaviour
                     
                     scoreP1++;
                     PlayerPrefs.SetInt("scoreP1", scoreP1);
-                    Debug.Log(scoreP1 + " " + scoreP2);
-                    gameManager.GameEnded();
+                    //Debug.Log(scoreP1 + " " + scoreP2);
+                    
                     winnerText.text = player1.name + " Won This Round!";
+                    
+                    gameManager.GameEnded();
                     GameHasEnded = true;
 
                     if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -184,26 +197,24 @@ public class Player : MonoBehaviour
 
     public void FinalResult()
     {
-        if (scoreP1 == 2 && scoreP2 == 0) // Player 1 kazanır
+        
+        // Debug.Log(scoreP1 + " " + scoreP2);
+        if (scoreP1 > scoreP2) // Player 1 kazanır
         {
             resultText.text = p1.name + " Won The Game!";
             resultScore.text = "P1: 2                      P2: 0";
         }
 
-        else if (scoreP1 == 0 && scoreP2 == 2) // Player 2 kazanır
+        else if (scoreP1 < scoreP2) // Player 2 kazanır
         {
             resultText.text = p2.name + " Won The Game!";
             resultScore.text = "P1: 0                      P2: 2";
         }
-        else if (scoreP1 == 1 && scoreP2 == 1) // Berabere
+        else if (scoreP1 == scoreP2) // Berabere
         {
             resultText.text = "Draw!";
             resultScore.text = "P1: 1                      P2: 1";
         }
-        else
-        {
-            resultText.text = "Hatalı sonuç";
-            resultScore.text = "";
-        }
+        
     }
 }
